@@ -1,0 +1,21 @@
+export const preset = {
+  name: "preset",
+  rules: [
+    [/^m-([.\d]+)$/, ([_, num]) => ({ margin: `${num}px` })],
+    [/^mt-([.\d]+)$/, ([_, num]) => ({ "margin-top": `${num}px` })],
+    [/^mr-([.\d]+)$/, ([_, num]) => ({ "margin-right": `${num}px` })],
+    [/^mb-([.\d]+)$/, ([_, num]) => ({ "margin-bottom": `${num}px` })],
+    [/^ml-([.\d]+)$/, ([_, num]) => ({ "margin-left": `${num}px` })],
+    [/^p-([.\d]+)$/, ([_, num]) => ({ padding: `${num}px` })],
+    [/^pt-([.\d]+)$/, ([_, num]) => ({ "padding-top": `${num}px` })],
+    [/^pr-([.\d]+)$/, ([_, num]) => ({ "padding-right": `${num}px` })],
+    [/^pb-([.\d]+)$/, ([_, num]) => ({ "padding-bottom": `${num}px` })],
+    [/^pl-([.\d]+)$/, ([_, num]) => ({ "padding-left": `${num}px` })],
+    [/^w-p-([.\d]+)$/, ([_, num]) => ({ width: `${num}px` })],
+    [/^h-p-([.\d]+)$/, ([_, num]) => ({ height: `${num}px` })],
+    [/^h-([.\d]+)$/, ([_, num]) => ({ height: `${num}%` })],
+    [/^w-([.\d]+)$/, ([_, num]) => ({ width: `${num}%` })],
+    [/^fs-([.\d]+)$/, ([_, num]) => ({ "font-size": `${num}px` })],
+    [/^fw-([.\d]+)$/, ([_, num]) => ({ "font-weight": `${num}` })],
+  ],
+};
