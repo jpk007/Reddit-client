@@ -11,3 +11,5 @@ FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
+# docker run -d -p 80:80 reddit-client
+# docker run -d -p 6502:80 reddit-client
