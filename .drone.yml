@@ -29,8 +29,8 @@ steps:
       - name: dockersock
         path: /var/run/docker.sock
     commands:
-      - docker stop react-app || true
-      - docker rm react-app || true
+      - docker stop reddit-client || true
+      - docker rm reddit-client || true
       - docker run -d --name reddit-client -p 6502:80 reddit-client:latest
 
 volumes:
