@@ -2,6 +2,12 @@ kind: pipeline
 type: docker
 name: build-and-serve-react
 
+trigger:
+  branch:
+    - main
+  event:
+    - push
+
 steps:
   - name: install-essentials
     image: node:18
