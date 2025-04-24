@@ -23,7 +23,7 @@ steps:
     commands:
       - docker build -t reddit-client:latest .
 
-  - name: run-react-container
+  - name: reddit-client
     image: docker:latest
     volumes:
       - name: dockersock
