@@ -1,35 +1,33 @@
 kind: pipeline
 type: docker
-name: react-build
-
-trigger:
-  branch:
-    - deploy
-  event:
-    - push
+name: build-and-serve-react
 
 steps:
-  - name: install-dependencies
+  - name: install-essentials
     image: node:18
     commands:
-      - npm ci
-
-  - name: run-tests
-    image: node:18
-    commands:
-      - npm test
-
-  - name: build
-    image: node:18
-    commands:
+      - npm install
       - npm run build
 
-  # - name: deploy
-  #   image: appleboy/drone-scp
-  #   settings:
-  #     host: 172.235.18.144
-  #     username: root
-  #     key:
-  #       from_secret: ssh_key
-  #     source: build/
-  #     target: /var/www/html/p1/
+  - name: build-reddit-client
+    image: docker:latest
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    commands:
+      - docker build -t reddit-client:latest .
+
+  - name: run-react-container
+    image: docker:latest
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    commands:
+      - docker stop react-app || true
+      - docker rm react-app || true
+      - docker run -d --name reddit-client -p 6502:80 reddit-client:latest
+
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock
