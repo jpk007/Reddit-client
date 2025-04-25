@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: build-and-serve-react
+name: build-and-serve-reddit-client
 
 trigger:
   branch:
@@ -13,6 +13,7 @@ steps:
     image: node:18
     commands:
       - npm install
+      - npm ls
       - npm run build
 
   - name: build-reddit-client
